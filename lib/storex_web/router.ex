@@ -16,7 +16,7 @@ defmodule StorexWeb.Router do
   scope "/", StorexWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", BookController, :index
   end
 
   # Other scopes may use custom stacks.
