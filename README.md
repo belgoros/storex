@@ -1,5 +1,7 @@
 # Storex
 
+Phoenix app based on [Phoenix for Rails Developers](https://phoenixforrailsdevelopers.com/) book by Elvio Vicosa.
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
