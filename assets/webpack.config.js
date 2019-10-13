@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, options) => ({
   optimization: {
@@ -35,7 +36,12 @@ module.exports = (env, options) => ({
     ]
   },
   plugins: [
+    require('autoprefixer'),
     new MiniCssExtractPlugin({ filename: '../css/app.css' }),
-    new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
+    new CopyWebpackPlugin([{ from: 'static/', to: '../' }]),
+    new webpack.ProvidePlugin({ // inject modules as global vars
+      $: 'jquery',
+      jQuery: 'jquery', 'window.jQuery': 'jquery',
+    })
   ]
 });

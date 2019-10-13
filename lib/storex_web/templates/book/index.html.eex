@@ -1,9 +1,7 @@
-<div class="container">
-  <%= for book <- @books do %>
-    <div class="row">
-      <div class="column"><%= book.title %></div>
-      <div class="column"><%= book.image_url %></div>
-      <div class="column"><%= book.price %></div>
-    </div>
-  <% end %>
-</div>
+<%= for book <- @books do %>
+  <div class="row">
+    <div class="small-2 columns"><%= book.title %></div>
+    <div class="small-2 columns"><%= book.image_url %></div>
+    <div class="small-2 columns"><%= book.price %></div>
+  </div>
+<% end %>
