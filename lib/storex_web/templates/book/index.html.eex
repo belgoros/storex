@@ -1,9 +1,18 @@
-<div class="container">
-  <%= for book <- @books do %>
-    <div class="row">
-      <div class="column"><%= book.title %></div>
-      <div class="column"><%= book.image_url %></div>
-      <div class="column"><%= book.price %></div>
-    </div>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Title</th>
+      <th>Image URL</th>
+      <th width="50">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for book <- @books do %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.image_url %></td>
+        <td><%= book.price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
