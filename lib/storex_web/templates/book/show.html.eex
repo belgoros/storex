@@ -1,0 +1,10 @@
+<h1><%= @book.title %></h1>
+<div class="media-object">
+  <div class="media-object-section">
+    <img src="<%= @book.image_url %>">
+  </div>
+  <div class="media-object-section">
+    <h4><%= @book.description %></h4>
+    <p><%= @book.price %></p>
+  </div>
+</div>

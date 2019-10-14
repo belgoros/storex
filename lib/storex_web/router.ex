@@ -17,6 +17,7 @@ defmodule StorexWeb.Router do
     pipe_through :browser
 
     get "/", BookController, :index
+    get "/books/:id", BookController, :show
   end
 
   # Other scopes may use custom stacks.

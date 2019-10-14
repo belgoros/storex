@@ -5,6 +5,17 @@ defmodule StorexWeb.BookController do
     render conn, "index.html", books: list_books()
   end
 
+  def show(conn, %{"id" => book_id}) do
+    book = %{
+      id: "1",
+      title: "My first book",
+      description: "My first story",
+      price: "15.9",
+      image_url: "http://www.phoenixforrailsdevelopers.com/books/1.png"
+    }
+    render conn, "show.html", book: book
+  end
+
   def list_books() do
     [
       %{
