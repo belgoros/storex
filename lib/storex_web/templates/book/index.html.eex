@@ -4,6 +4,7 @@
       <th width="200">Title</th>
       <th>Image URL</th>
       <th width="50">Price</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
         <td><%= book.title %></td>
         <td><%= book.image_url %></td>
         <td><%= book.price %></td>
+        <td><%= link "Show", to: Routes.book_path(@conn, :show, book.id)%></td>
       </tr>
     <% end %>
   </tbody>
