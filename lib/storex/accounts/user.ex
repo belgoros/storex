@@ -16,5 +16,7 @@ defmodule Storex.Accounts.User do
     user
     |> cast(attrs, [:email, :full_name, :password])
     |> validate_required([:email, :full_name, :password])
+    |> validate_length(:password, min: 6)
+    |> unique_constraint(:email)
   end
 end
