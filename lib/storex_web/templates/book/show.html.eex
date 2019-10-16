@@ -10,7 +10,7 @@
 <div class="grid-x grid-margin-x">
   <div class="cell small-2">
     <p>Price</p>
-    <p><%= @book.price %></p>
+    <p><%= format_price(@book.price) %></p>
   </div>
 </div>
 <div class="grid-x grid-margin-x">
