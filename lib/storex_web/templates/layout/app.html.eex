@@ -15,6 +15,13 @@
             <img src="<%= Routes.static_path(@conn, "/images/logo.svg") %>" alt="Storex logo"/>
           </a>
         </div>
+        <div class="top-bar-right">
+          <%= if items_count(@conn) do %>
+            <%= link to: Routes.cart_path(@conn, :show), class: "tiny button" do %>
+              cart <span class="alert badge"><%= items_count(@conn) %></span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </header>
     <div class="grid-container fluid">

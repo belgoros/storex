@@ -8,6 +8,7 @@ defmodule StorexWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug StorexWeb.Plugs.Cart
+    plug StorexWeb.Plugs.ItemsCount
   end
 
   pipeline :api do
