@@ -1,0 +1,28 @@
+<div class="row">
+  <h3>Your cart</h3>
+</div>
+<div class="grid-container fluid">
+  <%= for item <- @items do %>
+    <div class="grid-x grid-margin-x">
+       <div class="cell small-2">
+         <img class="cart­item__image" src="<%= item.book.image_url %>">
+       </div>
+       <div class="cell small-4"><%= item.book.title %></div>
+       <div class="cell shrink">
+         <%= link "­-", to: Routes.cart_path(@conn, :delete, book_id: item.book_id), method: :delete, class: "tiny button" %>
+       </div>
+       <div class="cell shrink"><%= item.quantity %></div>
+       <div class="cell shrink">
+         <%= link "+", to: Routes.cart_path(@conn, :create, book_id: item.book_id), method: :create, class: "tiny button" %>
+       </div>
+       <div class="cell auto"><%= item.book.price %></div>
+    </div>
+  <% end %>
+</div>
+
+<div class="grid-container fluid">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-1"><span class="primary label">Total:</span></div>
+    <div class="cell small-4"><%= @total %></div>
+  </div>
+</div>

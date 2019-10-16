@@ -7,6 +7,8 @@ defmodule StorexWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug StorexWeb.Plugs.Cart
+    plug StorexWeb.Plugs.ItemsCount
   end
 
   pipeline :api do
@@ -18,10 +20,6 @@ defmodule StorexWeb.Router do
 
     get "/", BookController, :index
     get "/books/:id", BookController, :show
+    resources "/carts", CartController, singleton: true, only: [:show, :create, :delete]
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", StorexWeb do
-  #   pipe_through :api
-  # end
 end

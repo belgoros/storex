@@ -1,10 +1,20 @@
 <h1><%= @book.title %></h1>
-<div class="media-object">
-  <div class="media-object-section">
+<div class="grid-x grid-margin-x">
+  <div class="cell small-2">
     <img src="<%= @book.image_url %>">
   </div>
-  <div class="media-object-section">
+  <div class="cell small-4">
     <h4><%= @book.description %></h4>
+  </div>
+</div>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-2">
+    <p>Price</p>
     <p><%= @book.price %></p>
+  </div>
+</div>
+<div class="grid-x grid-margin-x">
+  <div class="cell small-2">
+    <%= link "Add to cart", to: Routes.cart_path(@conn, :create, book_id: @book.id), method: :create, class: "button" %>
   </div>
 </div>
