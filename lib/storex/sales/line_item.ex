@@ -1,7 +1,6 @@
 defmodule Storex.Sales.LineItem do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Storex.Sales.LineItem
 
   schema "sales_line_items" do
     field :quantity, :integer
