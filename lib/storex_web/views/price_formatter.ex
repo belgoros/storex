@@ -1,5 +1,5 @@
 defmodule StorexWeb.Helpers.PriceFormatter do
   def format_price(%Decimal{} = price) do
-    "$ #{price}"
+    Number.Currency.number_to_currency(price)
   end
 end
