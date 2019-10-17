@@ -1,6 +1,7 @@
 defmodule StorexWeb.UserController do
   use StorexWeb, :controller
   alias Storex.Accounts
+  alias StorexWeb.Plugs.CurrentUser
 
   def new(conn, _params) do
     changeset = Accounts.new_user()
@@ -9,9 +10,10 @@ defmodule StorexWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case(Accounts.create_user(user_params)) do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
-        |> redirect(to: Routes.cart_path(conn, :index))
+        |> CurrentUser.set(user)
+        |> redirect(to: Routes.cart_path(conn, :show))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
