@@ -11,16 +11,31 @@
     <header>
       <div class="top-bar">
         <div class="top-bar-left">
-          <a href="#">
+          <%= link to: Routes.book_path(@conn, :index) do %>
             <img src="<%= Routes.static_path(@conn, "/images/logo.svg") %>" alt="Storex logo"/>
-          </a>
+          <% end %>
         </div>
         <div class="top-bar-right">
-          <%= if items_count(@conn) do %>
-            <%= link to: Routes.cart_path(@conn, :show), class: "tiny button" do %>
-              cart <span class="alert badge"><%= items_count(@conn) %></span>
+          <ul class="dropdown menu" data-dropdown-menu>
+            <%= if @current_user do %>
+              <li>
+                <a href="#"><%= @current_user.full_name %></a>
+                <ul class="menu">
+                  <li><%= link "Sign out", to: Routes.session_path(@conn, :delete), method: :delete %></li>
+                </ul>
+              </li>
+              <%= if items_count(@conn) do %>
+                <li>
+                  <%= link to: Routes.cart_path(@conn, :show), class: "tiny button" do %>
+                    Cart <span class="alert badge"><%= items_count(@conn) %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            <% else %>
+              <li><%= link "sign up", to: Routes.user_path(@conn, :new) %></li>
+              <li><%= link "sign in", to: Routes.session_path(@conn, :new) %></li>
             <% end %>
-          <% end %>
+          </ul>
         </div>
       </div>
     </header>
