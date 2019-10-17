@@ -61,7 +61,7 @@ defmodule Storex.AccountsTest do
     test "authenticate_user/2 returns an error when email is not found" do
       user_fixture()
 
-      assert {:error, "invalid user­identifier"} =
+      assert {:error, "invalid user-identifier"} =
                Accounts.authenticate_user("invalid@test.tld", @valid_attrs.password)
     end
 

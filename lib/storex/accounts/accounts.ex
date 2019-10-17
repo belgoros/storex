@@ -16,4 +16,9 @@ defmodule Storex.Accounts do
   def new_user() do
     User.changeset(%User{}, %{})
   end
+
+  def authenticate_user(email, password) do
+    Repo.get_by(User, email: email)
+    |> User.check_password(password)
+  end
 end

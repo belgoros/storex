@@ -18,5 +18,19 @@ defmodule Storex.Accounts.User do
     |> validate_required([:email, :full_name, :password])
     |> validate_length(:password, min: 6)
     |> unique_constraint(:email)
+    |> put_password_hash()
+  end
+
+  defp put_password_hash(changeset = %{valid?: true}) do
+    password = get_change(changeset, :password)
+    change(changeset, Bcrypt.add_hash(password))
+  end
+
+  defp put_password_hash(changeset) do
+    changeset
+  end
+
+  def check_password(user, password) do
+    Bcrypt.check_pass(user, password)
   end
 end
