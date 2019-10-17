@@ -21,4 +21,10 @@ defmodule StorexWeb.SessionController do
         |> render("new.html")
     end
   end
+
+  def delete(conn, _params) do
+    CurrentUser.forget(conn)
+    |> put_flash(:info, "You are signed off with success")
+    |> redirect(to: Routes.book_path(conn, :index))
+  end
 end
